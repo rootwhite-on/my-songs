@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pixelated Tamil Playlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* Pixel style variables */
+    :root{--bg:#0b0b0f;--panel:#101219;--accent:#00ff9c;--muted:#9aa0a6;--tile:#1a1a23;--glass:rgba(255,255,255,0.03);}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="%230b0b0f"/><rect x="0" y="0" width="2" height="2" fill="%2314181c"/></svg>');font-family:'Press Start 2P',monospace;color:var(--muted);-webkit-font-smoothing:none;-moz-osx-font-smoothing:grayscale;}
+    .wrap{max-width:1100px;margin:36px auto;padding:24px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:3px solid #151520;box-shadow:0 12px 36px rgba(0,0,0,0.6);border-radius:12px;}
+    header{display:flex;gap:18px;align-items:center;margin-bottom:18px;}
+    .logo{width:84px;height:84px;background:linear-gradient(45deg,#061218 0%,#0b1f1a 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:inset -6px -6px 0 rgba(0,0,0,0.6);image-rendering:pixelated;border:4px solid #071217;}
+    .logo .pix{width:64px;height:64px;image-rendering:pixelated;background:linear-gradient(#00ff9c 0 0) left/10px 10px no-repeat,linear-gradient(#00ff9c 0 0) center/10px 10px no-repeat,linear-gradient(#00ff9c 0 0) right/10px 10px no-repeat;opacity:0.95;}
+    h1{font-size:14px;margin:0;color:var(--accent);} p.lead{margin:0;font-size:10px;color:var(--muted);line-height:1.2;}
+    .player-panel{margin-top:12px;padding:14px;background:linear-gradient(135deg,rgba(255,255,255,0.01),rgba(255,255,255,0.02));border:2px solid #0e1116;border-radius:8px;display:flex;gap:14px;align-items:center;}
+    .player-embed{flex:1 1 640px;min-height:80px;border-radius:6px;overflow:hidden;background:var(--glass);}
+    .player-meta{width:240px;min-width:200px;text-align:right;}
+    .player-meta .now{font-size:9px;color:var(--accent);margin-bottom:8px;}
+    .player-meta .title{font-size:10px;color:#fff;margin-bottom:4px;}
+    .player-meta .sub{font-size:9px;color:var(--muted);}
+    .open-link{display:block;margin-top:8px;font-size:8px;color:var(--accent);text-decoration:none;}
+    .grid{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+    .tile{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:2px solid #0f1116;padding:10px;border-radius:8px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease;}
+    .tile:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+    .art{width:64px;height:64px;background-size:cover;border-radius:6px;flex:0 0 64px;image-rendering:pixelated;border:3px solid #071217;}
+    .meta{font-size:9px;line-height:1.1;}
+    .meta .song{color:#fff;font-size:10px;margin-bottom:6px;}
+    .meta .artist{color:var(--muted);}
+    footer{margin-top:18px;font-size:9px;color:var(--muted);text-align:center;}
+    .wrap, .tile, .player-panel {box-shadow:0 0 0 4px rgba(0,0,0,0.2) inset,0 0 0 1px rgba(255,255,255,0.02) inset;}
+    @media (max-width:640px){.player-meta{display:none;}header{gap:10px;}.wrap{padding:12px;}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"><div class="pix"></div></div>
+      <div><h1>PIXEL PLAYER – TAMIL</h1><p class="lead">Retro-pixel style playlist. Click a tile to load the track. User needs to be logged into Spotify.</p></div>
+    </header>
+
+    <section class="player-panel">
+      <div class="player-embed"><iframe id="spotifyIframe" src="https://open.spotify.com/embed/track/4sJJ2mXrAPEyHWIvKbV4ef" width="100%" height="80" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
+      <div class="player-meta"><div class="now">NOW LOADING</div><div class="title" id="nowTitle">Enjoy Enjaami</div><div class="sub" id="nowArtist">Dhee, Arivu</div><a id="openInSpotify" class="open-link" href="https://open.spotify.com/track/4sJJ2mXrAPEyHWIvKbV4ef" target="_blank" rel="noopener">Open in Spotify →</a></div>
+    </section>
+
+    <section class="grid">
+      <!-- 10 Tamil songs -->
+      <div class="tile" data-spotify="4sJJ2mXrAPEyHWIvKbV4ef" data-title="Enjoy Enjaami" data-artist="Dhee, Arivu" data-art=""><div class="art"></div><div class="meta"><div class="song">Enjoy Enjaami</div><div class="artist">Dhee, Arivu</div><a class="open-link" href="https://open.spotify.com/track/4sJJ2mXrAPEyHWIvKbV4ef" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="1pRHVSjEXuhZf7sEfH3yYS" data-title="Srivalli" data-artist="Devi Sri Prasad" data-art=""><div class="art"></div><div class="meta"><div class="song">Srivalli</div><div class="artist">Devi Sri Prasad</div><a class="open-link" href="https://open.spotify.com/track/1pRHVSjEXuhZf7sEfH3yYS" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="3LLtUqGYf7ty0kou2pmKRZ" data-title="Rowdy Baby" data-artist="Dhanush, Dhee" data-art=""><div class="art"></div><div class="meta"><div class="song">Rowdy Baby</div><div class="artist">Dhanush, Dhee</div><a class="open-link" href="https://open.spotify.com/track/3LLtUqGYf7ty0kou2pmKRZ" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <!-- Placeholder extras: add your preferred Tamil track IDs -->
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 4" data-artist="Artist 4" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 4</div><div class="artist">Artist 4</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 5" data-artist="Artist 5" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 5</div><div class="artist">Artist 5</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 6" data-artist="Artist 6" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 6</div><div class="artist">Artist 6</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 7" data-artist="Artist 7" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 7</div><div class="artist">Artist 7</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 8" data-artist="Artist 8" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 8</div><div class="artist">Artist 8</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 9" data-artist="Artist 9" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 9</div><div class="artist">Artist 9</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 10" data-artist="Artist 10" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 10</div><div class="artist">Artist 10</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+    </section>
+
+    <footer>Spotify embed requires user to be logged in. Replace placeholders with real track IDs and cover-art URLs for full effect.</footer>
+  </div>
+
+  <script>
+    function loadTrack(id, title, artist) {
+      document.getElementById('spotifyIframe').src = 'https://open.spotify.com/embed/track/' + id;
+      document.getElementById('nowTitle').textContent = title || '';
+      document.getElementById('nowArtist').textContent = artist || '';
+      document.getElementById('openInSpotify').href = 'https://open.spotify.com/track/' + id;
+    }
+    document.querySelectorAll('.tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        loadTrack(tile.dataset.spotify, tile.dataset.title, tile.dataset.artist);
+      });
+      tile.tabIndex = 0;
+      tile.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tile.click(); } });
+    });
+  </script>
+</body>
+</html>
