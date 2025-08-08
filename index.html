@@ -3,73 +3,292 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pixelated Tamil Playlist</title>
+  <title>Pixelated Tamil Playlist – Love Edition</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    /* Pixel style variables */
-    :root{--bg:#0b0b0f;--panel:#101219;--accent:#00ff9c;--muted:#9aa0a6;--tile:#1a1a23;--glass:rgba(255,255,255,0.03);}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="%230b0b0f"/><rect x="0" y="0" width="2" height="2" fill="%2314181c"/></svg>');font-family:'Press Start 2P',monospace;color:var(--muted);-webkit-font-smoothing:none;-moz-osx-font-smoothing:grayscale;}
-    .wrap{max-width:1100px;margin:36px auto;padding:24px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:3px solid #151520;box-shadow:0 12px 36px rgba(0,0,0,0.6);border-radius:12px;}
-    header{display:flex;gap:18px;align-items:center;margin-bottom:18px;}
-    .logo{width:84px;height:84px;background:linear-gradient(45deg,#061218 0%,#0b1f1a 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:inset -6px -6px 0 rgba(0,0,0,0.6);image-rendering:pixelated;border:4px solid #071217;}
-    .logo .pix{width:64px;height:64px;image-rendering:pixelated;background:linear-gradient(#00ff9c 0 0) left/10px 10px no-repeat,linear-gradient(#00ff9c 0 0) center/10px 10px no-repeat,linear-gradient(#00ff9c 0 0) right/10px 10px no-repeat;opacity:0.95;}
-    h1{font-size:14px;margin:0;color:var(--accent);} p.lead{margin:0;font-size:10px;color:var(--muted);line-height:1.2;}
-    .player-panel{margin-top:12px;padding:14px;background:linear-gradient(135deg,rgba(255,255,255,0.01),rgba(255,255,255,0.02));border:2px solid #0e1116;border-radius:8px;display:flex;gap:14px;align-items:center;}
-    .player-embed{flex:1 1 640px;min-height:80px;border-radius:6px;overflow:hidden;background:var(--glass);}
-    .player-meta{width:240px;min-width:200px;text-align:right;}
-    .player-meta .now{font-size:9px;color:var(--accent);margin-bottom:8px;}
-    .player-meta .title{font-size:10px;color:#fff;margin-bottom:4px;}
-    .player-meta .sub{font-size:9px;color:var(--muted);}
-    .open-link{display:block;margin-top:8px;font-size:8px;color:var(--accent);text-decoration:none;}
-    .grid{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
-    .tile{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:2px solid #0f1116;padding:10px;border-radius:8px;display:flex;gap:10px;align-items:center;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease;}
-    .tile:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.5);}
-    .art{width:64px;height:64px;background-size:cover;border-radius:6px;flex:0 0 64px;image-rendering:pixelated;border:3px solid #071217;}
-    .meta{font-size:9px;line-height:1.1;}
-    .meta .song{color:#fff;font-size:10px;margin-bottom:6px;}
-    .meta .artist{color:var(--muted);}
-    footer{margin-top:18px;font-size:9px;color:var(--muted);text-align:center;}
-    .wrap, .tile, .player-panel {box-shadow:0 0 0 4px rgba(0,0,0,0.2) inset,0 0 0 1px rgba(255,255,255,0.02) inset;}
-    @media (max-width:640px){.player-meta{display:none;}header{gap:10px;}.wrap{padding:12px;}}
+    :root {
+      --bg:#0b0b0f;
+      --panel:#1a0d12;
+      --accent:#ff4f81;
+      --muted:#d8a7b1;
+      --tile:#2b1520;
+      --glass:rgba(255,255,255,0.03);
+      --love-gradient: linear-gradient(180deg, rgba(255,79,129,0.15), rgba(255,0,85,0.05));
+    }
+
+    html,body {
+      height:100%;
+      margin:0;
+      background:
+        linear-gradient(180deg, rgba(255,0,85,0.05), rgba(0,0,0,0.9)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="10"><rect width="40" height="40" fill="%230b0b0f"/><rect x="0" y="0" width="2" height="2" fill="%2321141a"/></svg>');
+      font-family:'Press Start 2P',monospace;
+      color:var(--muted);
+      -webkit-font-smoothing:none;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap {
+      max-width:1100px;
+      margin:36px auto;
+      padding:24px;
+      background: var(--love-gradient);
+      border:3px solid #31101b;
+      box-shadow:0 12px 36px rgba(0,0,0,0.6);
+      border-radius:12px;
+    }
+
+    header {
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .logo {
+      width:84px;
+      height:84px;
+      background:linear-gradient(45deg,#2a0e1b 0%,#400f23 100%);
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:inset -6px -6px 0 rgba(0,0,0,0.6);
+      image-rendering:pixelated;
+      border:4px solid #1a0a12;
+    }
+
+    .logo .pix {
+      width:64px;
+      height:64px;
+      image-rendering:pixelated;
+      background:
+        linear-gradient(var(--accent) 0 0) left/10px 10px no-repeat,
+        linear-gradient(var(--accent) 0 0) center/10px 10px no-repeat,
+        linear-gradient(var(--accent) 0 0) right/10px 10px no-repeat;
+      opacity:0.95;
+    }
+
+    h1 { font-size:14px; margin:0; color:var(--accent); }
+    p.lead { margin:0; font-size:10px; color:var(--muted); line-height:1.2; }
+
+    .player-panel {
+      margin-top:12px;
+      padding:14px;
+      background:linear-gradient(135deg,rgba(255,79,129,0.07),rgba(255,79,129,0.03));
+      border:2px solid #2d101a;
+      border-radius:8px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .player-embed {
+      flex:1 1 640px;
+      min-height:80px;
+      border-radius:6px;
+      overflow:hidden;
+      background:var(--glass);
+    }
+
+    .player-meta { width:240px; min-width:200px; text-align:right; }
+    .player-meta .now { font-size:9px; color:var(--accent); margin-bottom:8px; }
+    .player-meta .title { font-size:10px; color:#fff; margin-bottom:4px; }
+    .player-meta .sub { font-size:9px; color:var(--muted); }
+    .open-link { display:block; margin-top:8px; font-size:8px; color:var(--accent); text-decoration:none; }
+
+    .grid {
+      margin-top:18px;
+      display:grid;
+      /* Updated to a two-column grid */
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+
+    .tile {
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01)),
+                 linear-gradient(180deg,rgba(255,79,129,0.05),rgba(255,79,129,0.02));
+      border:2px solid #2a121a;
+      padding:10px;
+      border-radius:8px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      cursor:pointer;
+      transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease;
+    }
+
+    .tile:hover {
+      transform:translateY(-6px);
+      box-shadow:0 10px 30px rgba(255,79,129,0.3);
+      border-color:var(--accent);
+    }
+
+    .art {
+      width:64px;
+      height:64px;
+      background-color: #2a0e1b;
+      border-radius:6px;
+      flex:0 0 64px;
+      image-rendering:pixelated;
+      border:3px solid #1a0a12;
+      /* Style the SVG content */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .art svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--muted);
+      opacity: 0.8;
+    }
+
+    .meta { font-size:9px; line-height:1.1; }
+    .meta .song { color:#fff; font-size:10px; margin-bottom:6px; }
+    .meta .artist { color:var(--muted); }
+
+    footer {
+      margin-top:30%; /* Increased margin to prevent overlap */
+      font-size:9px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .wrap, .tile, .player-panel {
+      box-shadow:0 0 0 4px rgba(0,0,0,0.2) inset,0 0 0 1px rgba(255,255,255,0.02) inset;
+    }
+
+    /* Mobile media query to make the grid a single column */
+    @media (max-width:640px) {
+      .player-meta { display:none; }
+      header { gap:10px; }
+      .wrap { padding:12px; }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="logo"><div class="pix"></div></div>
-      <div><h1>PIXEL PLAYER – TAMIL</h1><p class="lead">Retro-pixel style playlist. Click a tile to load the track. User needs to be logged into Spotify.</p></div>
+      <div>
+        <h1>PIXEL PLAYER – TAMIL ❤</h1>
+        <p class="lead">Love-themed retro playlist. Click a tile to load the track. User needs to be logged into Spotify.</p>
+      </div>
     </header>
 
     <section class="player-panel">
-      <div class="player-embed"><iframe id="spotifyIframe" src="https://open.spotify.com/embed/track/4sJJ2mXrAPEyHWIvKbV4ef" width="100%" height="80" frameborder="0" allow="autoplay; encrypted-media"></iframe></div>
-      <div class="player-meta"><div class="now">NOW LOADING</div><div class="title" id="nowTitle">Enjoy Enjaami</div><div class="sub" id="nowArtist">Dhee, Arivu</div><a id="openInSpotify" class="open-link" href="https://open.spotify.com/track/4sJJ2mXrAPEyHWIvKbV4ef" target="_blank" rel="noopener">Open in Spotify →</a></div>
+      <div class="player-embed">
+        <iframe id="spotifyIframe" src="https://open.spotify.com/embed/track/6vCHvMcRtfQvjAwpcwAbcU" width="100%" height="80" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+      </div>
+      <div class="player-meta">
+        <div class="now">NOW LOADING</div>
+        <div class="title" id="nowTitle"></div>
+        <div class="sub" id="nowArtist"></div>
+        <a id="openInSpotify" class="open-link" href="https://open.spotify.com/track/6vCHvMcRtfQvjAwpcwAbcU" target="_blank" rel="noopener">Open in Spotify →</a>
+      </div>
     </section>
 
     <section class="grid">
-      <!-- 10 Tamil songs -->
-      <div class="tile" data-spotify="4sJJ2mXrAPEyHWIvKbV4ef" data-title="Enjoy Enjaami" data-artist="Dhee, Arivu" data-art=""><div class="art"></div><div class="meta"><div class="song">Enjoy Enjaami</div><div class="artist">Dhee, Arivu</div><a class="open-link" href="https://open.spotify.com/track/4sJJ2mXrAPEyHWIvKbV4ef" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="1pRHVSjEXuhZf7sEfH3yYS" data-title="Srivalli" data-artist="Devi Sri Prasad" data-art=""><div class="art"></div><div class="meta"><div class="song">Srivalli</div><div class="artist">Devi Sri Prasad</div><a class="open-link" href="https://open.spotify.com/track/1pRHVSjEXuhZf7sEfH3yYS" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="3LLtUqGYf7ty0kou2pmKRZ" data-title="Rowdy Baby" data-artist="Dhanush, Dhee" data-art=""><div class="art"></div><div class="meta"><div class="song">Rowdy Baby</div><div class="artist">Dhanush, Dhee</div><a class="open-link" href="https://open.spotify.com/track/3LLtUqGYf7ty0kou2pmKRZ" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <!-- Placeholder extras: add your preferred Tamil track IDs -->
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 4" data-artist="Artist 4" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 4</div><div class="artist">Artist 4</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 5" data-artist="Artist 5" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 5</div><div class="artist">Artist 5</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 6" data-artist="Artist 6" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 6</div><div class="artist">Artist 6</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 7" data-artist="Artist 7" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 7</div><div class="artist">Artist 7</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 8" data-artist="Artist 8" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 8</div><div class="artist">Artist 8</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 9" data-artist="Artist 9" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 9</div><div class="artist">Artist 9</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
-      <div class="tile" data-spotify="0000000000000000000000" data-title="Demo 10" data-artist="Artist 10" data-art=""><div class="art"></div><div class="meta"><div class="song">Demo 10</div><div class="artist">Artist 10</div><a class="open-link" href="#" target="_blank" rel="noopener">Open ▶</a></div></div>
+      <!-- Populated Song Cards with Data -->
+      <div class="tile" data-spotify="6vCHvMcRtfQvjAwpcwAbcU" data-title="Amali Thumali (From &quot;KO&quot;)" data-artist="Harris Jayaraj, Chinmayi, Hariharan, Shweta Mohan">
+        <div class="art" title="Amali Thumali Album Art"></div>
+        <div class="meta">
+          <div class="song">Amali Thumali</div>
+          <div class="artist">Harris Jayaraj</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="4w4592PKZilgQoawzmyqJH" data-title="Munbe Vaa" data-artist="A.R. Rahman, Shreya Ghoshal, Naresh Iyer">
+        <div class="art" title="Munbe Vaa Album Art"></div>
+        <div class="meta">
+          <div class="song">Munbe Vaa</div>
+          <div class="artist">A.R. Rahman</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="1ZbfvUHBfdODgIL70sk6XR" data-title="Ennai Maatrum Kadhale" data-artist="Anirudh Ravichander, Sid Sriram">
+        <div class="art" title="Ennai Maatrum Kadhale Album Art"></div>
+        <div class="meta">
+          <div class="song">Ennai Maatrum Kadhale</div>
+          <div class="artist">Anirudh Ravichander</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="6Xejo9F1hr17aXInilcKZ7" data-title="Kangal Irandal" data-artist="James Vasanthan, Deepa Miriam">
+        <div class="art" title="Kangal Irandal Album Art"></div>
+        <div class="meta">
+          <div class="song">Kangal Irandal</div>
+          <div class="artist">James Vasanthan</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="1hLIKcQCD7i1AwLfnGrwWX" data-title="Kaadhal Oru" data-artist="Joshua Sridhar, R.P. Pattanayak">
+        <div class="art" title="Kaadhal Oru Album Art"></div>
+        <div class="meta">
+          <div class="song">Kaadhal Oru</div>
+          <div class="artist">Joshua Sridhar</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="0o3uULd3Lz2jhjmvUvNcOZ" data-title="Oru Naalil" data-artist="Yuvan Shankar Raja">
+        <div class="art" title="Oru Naalil Album Art"></div>
+        <div class="meta">
+          <div class="song">Oru Naalil</div>
+          <div class="artist">Yuvan Shankar Raja</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="1GLQpuaJY20wlryHZv5Kqo" data-title="Sivappu Manjal Pachai" data-artist="Justin Prabhakaran">
+        <div class="art" title="Sivappu Manjal Pachai Album Art"></div>
+        <div class="meta">
+          <div class="song">Sivappu Manjal Pachai</div>
+          <div class="artist">Justin Prabhakaran</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="6cZcVAjgELRB6w9h6jaYtJ" data-title="Idhu Varai" data-artist="Yuvan Shankar Raja, Andrea Jeremiah">
+        <div class="art" title="Idhu Varai Album Art"></div>
+        <div class="meta">
+          <div class="song">Idhu Varai</div>
+          <div class="artist">Yuvan Shankar Raja</div>
+        </div>
+      </div>
+      <div class="tile" data-spotify="7Ja5SkTniDUgOBxbiMTfvD" data-title="Avalukkenna" data-artist="Harris Jayaraj, S.P. Balasubrahmanyam, Unnikrishnan">
+        <div class="art" title="Avalukkenna Album Art"></div>
+        <div class="meta">
+          <div class="song">Avalukkenna</div>
+          <div class="artist">Harris Jayaraj</div>
+        </div>
+      </div>
     </section>
 
-    <footer>Spotify embed requires user to be logged in. Replace placeholders with real track IDs and cover-art URLs for full effect.</footer>
+    <footer>Made with love by Ash</footer>
   </div>
 
   <script>
+    // A collection of simple SVG icons for the album art
+    const icons = [
+      `<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.45 5.45 0 017.5 3c1.74 0 3.42.86 4.5 2.22A5.45 5.45 0 0116.5 3c3.03 0 5.5 2.47 5.5 5.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`, // Heart
+      `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>`, // Star
+      `<svg viewBox="0 0 24 24"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`, // Info
+      `<svg viewBox="0 0 24 24"><path d="M12 21.35c-2.45-2.02-6-5.83-6-10.35A5.45 5.45 0 0112 5.5c3.03 0 5.5 2.47 5.5 5.5c0 4.52-3.55 8.33-6 10.35z"/></svg>`, // Drop
+      `<svg viewBox="0 0 24 24"><path d="M21 12.9V12h-4v-1.9c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2V12H3c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h4v1.9c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V18h4c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zM9 14h6v2H9v-2zm0-2h6v-2H9v2z"/></svg>` // Musical Note (pixelated-style)
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.tile').forEach(tile => {
+        // Get a random icon from the array and set it as the innerHTML of the .art div
+        const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+        const artDiv = tile.querySelector('.art');
+        artDiv.innerHTML = randomIcon;
+      });
+    });
+
     function loadTrack(id, title, artist) {
       document.getElementById('spotifyIframe').src = 'https://open.spotify.com/embed/track/' + id;
       document.getElementById('nowTitle').textContent = title || '';
       document.getElementById('nowArtist').textContent = artist || '';
       document.getElementById('openInSpotify').href = 'https://open.spotify.com/track/' + id;
     }
+
     document.querySelectorAll('.tile').forEach(tile => {
       tile.addEventListener('click', () => {
         loadTrack(tile.dataset.spotify, tile.dataset.title, tile.dataset.artist);
